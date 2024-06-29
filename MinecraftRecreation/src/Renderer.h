@@ -3,6 +3,8 @@
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
 
+#include "Shader.h"
+
 class Renderer
 {
 public:
@@ -14,9 +16,7 @@ public:
 	void render();
 	void terminate();
 private:
-	unsigned int vertexShader = 0;
-	unsigned int fragmentShader = 0; 
-	unsigned int shaderProgram = 0;
+	Shader shader;
 
 	unsigned int VBO = 0; 
 	unsigned int VAO = 0;

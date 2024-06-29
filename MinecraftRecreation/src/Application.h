@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 
 #include "GL/glew.h"
@@ -6,7 +8,6 @@
 #include "config.h"
 #include "Renderer.h"
 
-#pragma once
 class Application
 {
 public:
