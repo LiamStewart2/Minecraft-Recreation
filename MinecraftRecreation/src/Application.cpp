@@ -121,16 +121,16 @@ void Application::start()
 
     loadMesh();
 
-    meshes = std::vector<Mesh*>();
+    meshes = std::vector<Mesh>();
 
     for (int i = -3; i <= 3; i++)
     {
         for (int j = -3; j <= 3; j++)
         {
-            Mesh* mesh = new Mesh();
+            Mesh mesh;
 
-            mesh->loadMeshData(&vertices);
-            mesh->setPosition(i, 0, j);
+            mesh.loadMeshData(&vertices);
+            mesh.setPosition(i, 0, j);
 
             meshes.push_back(mesh);
         }
@@ -168,10 +168,10 @@ void Application::render()
     renderer.clear();
 
     int count = 0;
-    for(Mesh* mesh : meshes)
+    for(Mesh mesh : meshes)
     {
         count++;
-        renderer.render(&camera, mesh);
+        renderer.render(&camera, &mesh);
     }
 
     glfwSwapBuffers(window);
@@ -185,8 +185,8 @@ void Application::terminate()
 {
     glfwTerminate();
     renderer.terminate();
-    for (Mesh* mesh : meshes)
-        mesh->clean();
+    for (Mesh mesh : meshes)
+        mesh.clean();
 }
 
 
