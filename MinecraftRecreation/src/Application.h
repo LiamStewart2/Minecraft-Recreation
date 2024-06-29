@@ -8,6 +8,7 @@
 #include "config.h"
 #include "Renderer.h"
 #include "Camera.h"
+#include "Mesh.h"
 
 class Application
 {
@@ -21,6 +22,10 @@ private:
 	GLFWwindow* window;
 	Renderer renderer;
 	Camera camera = Camera(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+	std::vector<Mesh> meshes;
+	std::vector<Vertex> vertices;
+	void loadMesh();
 
 	float mouseXPos = -1; float mouseYPos = -1;
 
