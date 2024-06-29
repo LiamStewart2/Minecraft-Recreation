@@ -49,6 +49,10 @@ void Application::init()
             glfwSetCursorPosCallback(window, mouse_callback);
             glfwSetScrollCallback(window, scroll_callback);
 
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+            glEnable(GL_DEPTH_TEST);
+
             GLenum err = glewInit();
             if (err != GLEW_OK)
             {
@@ -94,7 +98,7 @@ void Application::handleEvents()
 
 void Application::render()
 {
-    renderer.render();
+    renderer.render(&camera);
 
     glfwSwapBuffers(window);
 }
@@ -108,15 +112,21 @@ void Application::terminate()
 void Application::onMouseMove(double mouseX, double mouseY)
 {
     if (mouseXPos == -1 || mouseYPos == -1)
+    {
         mouseXPos = mouseX; mouseYPos = mouseY;
+    }
+
+
 
     float mouseXOffset = mouseX - mouseXPos;
-    float mouseYOffset = mouseY - mouseYPos;
+    float mouseYOffset = mouseYPos - mouseY;
+
+    std::cout << mouseXOffset << ":" << mouseYOffset << "\n";
 
     mouseXPos = mouseX;
     mouseYPos = mouseY;
 
-    camera.processMouseMovement(mouseXOffset, mouseYOffset);
+    camera.processMouseMovement(mouseXOffset, mouseYOffset, true);
 }
 void Application::onMouseScroll(double xOffset, double yOffset)
 {

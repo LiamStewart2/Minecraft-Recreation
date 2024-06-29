@@ -1,5 +1,7 @@
 #include "Camera.h"
 
+#include <iostream>
+
 Camera::Camera(glm::vec3 _up, glm::vec3 _front)
 {
 	position = config::cameraStartPosition;
@@ -29,10 +31,11 @@ void Camera::processKeyboard(GLFWwindow* window)
         position += glm::normalize(glm::cross(front, up)) * movementSpeed;
 }
 
-void Camera::processMouseMovement(float xOffset, float yOffset, GLboolean constrainPitch = true)
+void Camera::processMouseMovement(float xOffset, float yOffset, GLboolean constrainPitch)
 {
     xOffset *= mouseSensitivity;
     yOffset *= mouseSensitivity;
+
 
     yaw += xOffset;
     pitch += yOffset;
@@ -51,10 +54,10 @@ void Camera::processMouseMovement(float xOffset, float yOffset, GLboolean constr
 void Camera::processMouseScroll(float yOffset)
 {
     zoom -= (float)yOffset;
-    if (zoom < 1.0f)
-        zoom = 1.0f;
-    if (zoom > 45.0f)
-        zoom = 45.0f;
+    if (zoom < 75)
+        zoom = 75;
+    if (zoom > 100)
+        zoom = 100;
 }
 
 void Camera::updateCameraVectors()

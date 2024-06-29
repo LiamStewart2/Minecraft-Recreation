@@ -4,6 +4,7 @@
 #include "GLFW/glfw3.h"
 
 #include "Shader.h"
+#include "Camera.h"
 
 class Renderer
 {
@@ -13,7 +14,7 @@ public:
 
 	void initialize();
 
-	void render();
+	void render(Camera* camera);
 	void terminate();
 private:
 	Shader shader;
