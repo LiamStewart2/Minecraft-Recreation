@@ -23,7 +23,7 @@ private:
 	Renderer renderer;
 	Camera camera = Camera(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	Mesh mesh;
+	std::vector<Mesh*> meshes;
 	std::vector<Vertex> vertices;
 	void loadMesh();
 

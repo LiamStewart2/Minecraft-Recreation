@@ -21,6 +21,12 @@ void Mesh::loadMeshData(std::vector<Vertex>* Vertices)
 	glBindVertexArray(0);
 }
 
+void Mesh::setPosition(float x, float y, float z)
+{
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(x, y, z));
+}
+
 void Mesh::BindMeshBuffer() 
 {
 	glBindVertexArray(VAO);

@@ -16,6 +16,7 @@ public:
 
 	void initialize();
 
+	void clear();
 	void render(Camera* camera, Mesh* mesh);
 	void terminate();
 private:
