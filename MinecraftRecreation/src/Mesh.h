@@ -17,6 +17,8 @@ public:
 	void loadMeshData(std::vector<Vertex>* Vertices);
 	void BindMeshBuffer();
 
+	unsigned int getNumberOfVertices() { return vertices.size(); }
+
 	void clean();
 private:
 	std::vector<Vertex> vertices;

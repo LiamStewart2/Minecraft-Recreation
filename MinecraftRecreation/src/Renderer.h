@@ -15,12 +15,9 @@ public:
 	~Renderer() {}
 
 	void initialize();
-	void loadMesh();
 
-	void render(Camera* camera);
+	void render(Camera* camera, Mesh* mesh);
 	void terminate();
 private:
 	Shader shader;
-	Mesh mesh;
-	std::vector<Vertex> vertices;
 };

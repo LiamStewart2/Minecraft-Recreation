@@ -67,10 +67,63 @@ void Application::init()
     }
 }
 
+//TODO: remove this
+void Application::loadMesh()
+{
+    vertices = std::vector<Vertex>({
+      Vertex(-0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
+      Vertex(0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
+      Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
+      Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
+      Vertex(-0.5f,  0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
+      Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
+
+      Vertex(-0.5f, -0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
+      Vertex(0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
+      Vertex(0.5f,  0.5f,  0.5f, 0.0f, 1.0f, 0.0f),
+      Vertex(0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
+      Vertex(-0.5f,  0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
+      Vertex(-0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
+
+      Vertex(-0.5,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
+      Vertex(-0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
+      Vertex(-0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
+      Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
+      Vertex(-0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
+      Vertex(-0.5f,  0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
+
+      Vertex(0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
+      Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
+      Vertex(0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
+      Vertex(0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
+      Vertex(0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
+      Vertex(0.5f,  0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
+
+      Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
+      Vertex(0.5f, -0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
+      Vertex(0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
+      Vertex(0.5f, -0.5f,  0.5f, 0.0f, 1.0f, 0.0f),
+      Vertex(-0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
+      Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
+
+      Vertex(-0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
+      Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
+      Vertex(0.5f,  0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
+      Vertex(0.5f,  0.5f,  0.5f, 0.0f, 1.0f, 0.0f),
+      Vertex(-0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
+      Vertex(-0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f)
+    });
+}
+
 void Application::start()
 {
     renderer.initialize();
+
+    loadMesh();
+    mesh.loadMeshData(&vertices);
 }
+
+
 
 void Application::mainloop()
 {
@@ -98,16 +151,25 @@ void Application::handleEvents()
 
 void Application::render()
 {
-    renderer.render(&camera);
+    renderer.render(&camera, &mesh);
 
     glfwSwapBuffers(window);
 }
+
+
+
+
 
 void Application::terminate()
 {
     glfwTerminate();
     renderer.terminate();
+    mesh.clean();
 }
+
+
+
+
 
 void Application::onMouseMove(double mouseX, double mouseY)
 {
@@ -120,7 +182,6 @@ void Application::onMouseMove(double mouseX, double mouseY)
     float mouseXOffset = mouseX - mouseXPos;
     float mouseYOffset = mouseYPos - mouseY;
 
-    std::cout << mouseXOffset << ":" << mouseYOffset << "\n";
 
     mouseXPos = mouseX;
     mouseYPos = mouseY;
