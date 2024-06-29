@@ -11,6 +11,16 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 { 
     glViewport(0, 0, width, height); 
 }
+void mouse_callback(GLFWwindow* window, double xPos, double yPos)
+{
+    Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
+    app->onMouseMove(xPos, yPos);
+}
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
+    app->onMouseScroll(xoffset, yoffset);
+}
 
 void Application::init()
 {
@@ -32,7 +42,12 @@ void Application::init()
         else
         {
             glfwMakeContextCurrent(window);
+
+            glfwSetWindowUserPointer(window, this);
+
             glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+            glfwSetCursorPosCallback(window, mouse_callback);
+            glfwSetScrollCallback(window, scroll_callback);
 
             GLenum err = glewInit();
             if (err != GLEW_OK)
@@ -66,7 +81,7 @@ void Application::mainloop()
 
 void Application::update()
 {
-
+    camera.processKeyboard(window);
 }
 
 void Application::handleEvents()
@@ -88,4 +103,22 @@ void Application::terminate()
 {
     glfwTerminate();
     renderer.terminate();
+}
+
+void Application::onMouseMove(double mouseX, double mouseY)
+{
+    if (mouseXPos == -1 || mouseYPos == -1)
+        mouseXPos = mouseX; mouseYPos = mouseY;
+
+    float mouseXOffset = mouseX - mouseXPos;
+    float mouseYOffset = mouseY - mouseYPos;
+
+    mouseXPos = mouseX;
+    mouseYPos = mouseY;
+
+    camera.processMouseMovement(mouseXOffset, mouseYOffset);
+}
+void Application::onMouseScroll(double xOffset, double yOffset)
+{
+    camera.processMouseScroll(yOffset);
 }
