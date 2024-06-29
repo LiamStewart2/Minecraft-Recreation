@@ -5,6 +5,8 @@
 
 #include "Shader.h"
 #include "Camera.h"
+#include "Mesh.h"
+#include "Vertex.h"
 
 class Renderer
 {
@@ -13,13 +15,12 @@ public:
 	~Renderer() {}
 
 	void initialize();
+	void loadMesh();
 
 	void render(Camera* camera);
 	void terminate();
 private:
 	Shader shader;
-
-	unsigned int VBO = 0; 
-	unsigned int VAO = 0;
-	unsigned int EBO = 0;
+	Mesh mesh;
+	std::vector<Vertex> vertices;
 };

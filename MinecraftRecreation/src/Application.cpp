@@ -117,7 +117,6 @@ void Application::onMouseMove(double mouseX, double mouseY)
     }
 
 
-
     float mouseXOffset = mouseX - mouseXPos;
     float mouseYOffset = mouseYPos - mouseY;
 
