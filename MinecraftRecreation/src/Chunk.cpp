@@ -17,7 +17,7 @@ void Chunk::generateTerrain()
 			for (int y = 0; y < config::chunkLayers; y++)
 			{
 				int index = getIndexFromRelativePosition(x, y, z);
-				if (y < 15 || y > 30)
+				if (y > x + z)
 					blockBuffer[index] = Grass;
 				else
 					blockBuffer[index] = Air;
@@ -39,7 +39,22 @@ void Chunk::generateChunkMesh()
 				int index = getIndexFromRelativePosition(x, y, z);
 				
 				if (blockBuffer[index] == Grass)
-					chunkMesh.loadMeshData(&vertices, glm::vec3(x, y, z));
+				{
+					if (y < config::chunkLayers - 1 && blockBuffer[getIndexFromRelativePosition(x, y + 1, z)] == Air)
+						chunkMesh.loadMeshData(&FaceData::TOP, glm::vec3(x, y, z));
+					if (y > 0 && blockBuffer[getIndexFromRelativePosition(x, y - 1, z)] == Air)
+						chunkMesh.loadMeshData(&FaceData::BOTTOM, glm::vec3(x, y, z));
+
+					if (x < config::chunkWidth - 1 && blockBuffer[getIndexFromRelativePosition(x + 1, y, z)] == Air)
+						chunkMesh.loadMeshData(&FaceData::RIGHT, glm::vec3(x, y, z));
+					if (x > 0 && blockBuffer[getIndexFromRelativePosition(x - 1, y, z)] == Air)
+						chunkMesh.loadMeshData(&FaceData::LEFT, glm::vec3(x, y, z));
+
+					if (z < config::chunkHeight - 1 && blockBuffer[getIndexFromRelativePosition(x, y, z + 1)] == Air)
+						chunkMesh.loadMeshData(&FaceData::BACK, glm::vec3(x, y, z));
+					if (z > 0 && blockBuffer[getIndexFromRelativePosition(x, y, z - 1)] == Air)
+						chunkMesh.loadMeshData(&FaceData::FRONT, glm::vec3(x, y, z));
+				}
 
 			}
 		}

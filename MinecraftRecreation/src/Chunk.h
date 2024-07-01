@@ -2,6 +2,7 @@
 
 #include "Mesh.h"
 #include "config.h"
+#include "FaceData.h"
 
 enum Block { Air, Grass };
 
@@ -23,7 +24,6 @@ private:
 	Mesh chunkMesh;
 
 	Block blockBuffer[config::chunkWidth * config::chunkHeight * config::chunkLayers];
-
 
     std::vector<Vertex> vertices = std::vector<Vertex>({
         Vertex(-0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
