@@ -14,4 +14,9 @@ struct config {
 	const static int zoom = 85;
 	const static int yaw = -90;
 	const static int pitch = 0;
+
+	// World Settings
+	const static unsigned int chunkWidth = 16;
+	const static unsigned int chunkHeight = 16;
+	const static unsigned int chunkLayers = 64;
 };

@@ -9,6 +9,7 @@
 #include "Renderer.h"
 #include "Camera.h"
 #include "Mesh.h"
+#include "Chunk.h"
 
 class Application
 {
@@ -23,9 +24,14 @@ private:
 	Renderer renderer;
 	Camera camera = Camera(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
+	Mesh testMesh;
+	std::vector<Vertex> testVertices;
+
 	std::vector<Mesh> meshes;
 	std::vector<Vertex> vertices;
 	void loadMesh();
+
+	Chunk chunk;
 
 	float mouseXPos = -1; float mouseYPos = -1;
 
