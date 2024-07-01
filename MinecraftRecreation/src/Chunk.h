@@ -19,7 +19,6 @@ public:
 	Block getBlockAtPosition(int x, int y, int z);
 	int getIndexFromRelativePosition(int x, int y, int z);
 
-	void __debug__printbuffertoconsole();
 private:
 	Mesh chunkMesh;
 
