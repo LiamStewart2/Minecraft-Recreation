@@ -17,7 +17,12 @@ public:
 	~Mesh() {}
 
 	void setPosition(float x, float y, float z);
+
 	void loadMeshData(std::vector<Vertex>* Vertices);
+	void loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 offset);
+
+	void generateMeshBuffers();
+
 	void BindMeshBuffer();
 
 	unsigned int getNumberOfVertices() { return vertices.size(); }

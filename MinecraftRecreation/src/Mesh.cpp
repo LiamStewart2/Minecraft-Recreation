@@ -4,7 +4,22 @@ void Mesh::loadMeshData(std::vector<Vertex>* Vertices)
 {
 	for (Vertex v : *Vertices)
 		vertices.push_back(v);
+}
+void Mesh::loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 offset)
+{
+	for (Vertex v : *Vertices)
+	{
+		vertices.push_back(v);
+		Vertex* vertex = &vertices.back();
+		vertex->x += offset.x;
+		vertex->y += offset.y;
+		vertex->z += offset.z;
+	}
+}
 
+
+void Mesh::generateMeshBuffers()
+{
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 
