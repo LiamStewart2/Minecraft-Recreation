@@ -17,7 +17,7 @@ void Chunk::generateTerrain()
 			for (int y = 0; y < config::chunkLayers; y++)
 			{
 				int index = getIndexFromRelativePosition(x, y, z);
-				if (y != 10)
+				if (y > 15)
 					blockBuffer[index] = Air;
 				else
 					blockBuffer[index] = Grass;
@@ -29,6 +29,7 @@ void Chunk::generateTerrain()
 
 void Chunk::generateChunkMesh()
 {
+	double t = glfwGetTime();
 	chunkMesh.setPosition(0, -10, 0);
 	for (int x = 0; x < config::chunkWidth; x++)
 	{
@@ -44,6 +45,8 @@ void Chunk::generateChunkMesh()
 			}
 		}
 	}
+	chunkMesh.generateMeshBuffers();
+	std::cout << glfwGetTime() - t << ": Time to generate chunk" << std::endl;
 }
 
 void Chunk::__debug__printbuffertoconsole()

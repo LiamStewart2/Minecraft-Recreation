@@ -21,6 +21,8 @@ public:
 	void loadMeshData(std::vector<Vertex>* Vertices);
 	void loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 offset);
 
+	void generateMeshBuffers();
+
 	void BindMeshBuffer();
 
 	unsigned int getNumberOfVertices() { return vertices.size(); }
@@ -30,8 +32,6 @@ public:
 private:
 	std::vector<Vertex> vertices;
 	glm::mat4 model;
-
-	void generateMeshBuffers();
 
 	unsigned int VAO = 0;
 	unsigned int VBO = 0;
