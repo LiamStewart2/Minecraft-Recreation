@@ -7,6 +7,7 @@
 #include "Camera.h"
 #include "Mesh.h"
 #include "Vertex.h"
+#include "Texture.h"
 
 class Renderer
 {
@@ -17,7 +18,7 @@ public:
 	void initialize();
 
 	void clear();
-	void render(Camera* camera, Mesh* mesh);
+	void render(Camera* camera, Mesh* mesh, Texture* tex);
 	void terminate();
 private:
 	Shader shader;

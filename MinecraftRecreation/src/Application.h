@@ -10,6 +10,7 @@
 #include "Camera.h"
 #include "Mesh.h"
 #include "Chunk.h"
+#include "Texture.h"
 
 class Application
 {
@@ -23,13 +24,7 @@ private:
 	GLFWwindow* window;
 	Renderer renderer;
 	Camera camera = Camera(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-
-	Mesh testMesh;
-	std::vector<Vertex> testVertices;
-
-	std::vector<Mesh> meshes;
-	std::vector<Vertex> vertices;
-	void loadMesh();
+	Texture textureAtlas;
 
 	Chunk chunk;
 

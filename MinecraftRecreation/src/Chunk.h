@@ -24,49 +24,4 @@ private:
 	Mesh chunkMesh;
 
 	Block blockBuffer[config::chunkWidth * config::chunkHeight * config::chunkLayers];
-
-    std::vector<Vertex> vertices = std::vector<Vertex>({
-        Vertex(-0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(-0.5f,  0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-
-        Vertex(-0.5f, -0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f,  0.5f,  0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(-0.5f,  0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(-0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
-
-        Vertex(-0.5,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(-0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(-0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(-0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(-0.5f,  0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
-
-        Vertex(0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f,  0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
-
-        Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f, -0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f, -0.5f,  0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(-0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-
-        Vertex(-0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(0.5f,  0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f,  0.5f,  0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(-0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(-0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f)
-     });
-
 };

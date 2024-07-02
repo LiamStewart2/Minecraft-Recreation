@@ -67,96 +67,14 @@ void Application::init()
     }
 }
 
-//TODO: remove this
-void Application::loadMesh()
-{
-    vertices = std::vector<Vertex>({
-        Vertex(-0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(-0.5f,  0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-
-        Vertex(-0.5f, -0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f,  0.5f,  0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(-0.5f,  0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(-0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
-
-        Vertex(-0.5,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(-0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(-0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(-0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(-0.5f,  0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
-
-        Vertex(0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f,  0.5f,  0.5f, 0.0f, 0.6f, 0.3f),
-
-        Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f, -0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f, -0.5f,  0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(-0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-
-        Vertex(-0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(0.5f,  0.5f,  0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f,  0.5f,  0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(-0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(-0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f)
-    });
-
-    testVertices = std::vector<Vertex>({
-        Vertex(-0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(0.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(-0.5f,  0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(-0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-
-        Vertex(2.5f, -0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(1.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-        Vertex(2.5f,  0.5f, -0.5f, 0.0f, 0.0f, 1.0f),
-        Vertex(2.5f,  0.5f, -0.5f, 0.0f, 0.6f, 0.3f),
-        Vertex(1.5f,  0.5f, -0.5f, 1.0f, 0.0f, 0.0f),
-        Vertex(1.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.0f),
-    });
-}
-
 void Application::start()
 {
     renderer.initialize();
 
-    loadMesh();
-
-    meshes = std::vector<Mesh>();
-
-    testMesh.loadMeshData(&testVertices);
-    testMesh.setPosition(5, 2, 0);
-
-    for (int i = -3; i <= 3; i++)
-    {
-        for (int j = -3; j <= 3; j++)
-        {
-            Mesh mesh;
-
-            mesh.loadMeshData(&vertices);
-            mesh.setPosition(i, 0, j);
-
-            meshes.push_back(mesh);
-        }
-    }
-
     chunk.generateTerrain();
     chunk.generateChunkMesh();
+
+    textureAtlas.loadTexture("res/textures/atlas/blockAtlas.png");
 }
 
 
@@ -189,12 +107,7 @@ void Application::render()
 {
     renderer.clear();
 
-    //for(Mesh mesh : meshes)
-        //renderer.render(&camera, &mesh);
-
-    //renderer.render(&camera, &testMesh);
-
-    renderer.render(&camera, chunk.getChunkMesh());
+    renderer.render(&camera, chunk.getChunkMesh(), &textureAtlas);
 
     glfwSwapBuffers(window);
 }
@@ -207,8 +120,6 @@ void Application::terminate()
 {
     glfwTerminate();
     renderer.terminate();
-    for (Mesh mesh : meshes)
-        mesh.clean();
 }
 
 

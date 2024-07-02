@@ -1,5 +1,8 @@
 #include "Mesh.h"
 
+#include <cstddef>
+#include <iostream>
+
 void Mesh::loadMeshData(std::vector<Vertex>* Vertices)
 {
 	for (Vertex v : *Vertices)
@@ -10,10 +13,7 @@ void Mesh::loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 offset)
 	for (Vertex v : *Vertices)
 	{
 		vertices.push_back(v);
-		Vertex* vertex = &vertices.back();
-		vertex->x += offset.x;
-		vertex->y += offset.y;
-		vertex->z += offset.z;
+		vertices.back().position += offset;
 	}
 }
 
@@ -27,10 +27,15 @@ void Mesh::generateMeshBuffers()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices.front(), GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	// Position attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	// Color attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, colour));
 	glEnableVertexAttribArray(1);
+	// Texture Coord attribute
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, textureCoordinate));
+	glEnableVertexAttribArray(2);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
