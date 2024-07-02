@@ -8,12 +8,21 @@ void Mesh::loadMeshData(std::vector<Vertex>* Vertices)
 	for (Vertex v : *Vertices)
 		vertices.push_back(v);
 }
-void Mesh::loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 offset)
+void Mesh::loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 positionOffset)
 {
 	for (Vertex v : *Vertices)
 	{
 		vertices.push_back(v);
-		vertices.back().position += offset;
+		vertices.back().position += positionOffset;
+	}
+}
+void Mesh::loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 positionOffset, glm::vec2 textureOffset)
+{
+	for (Vertex v : *Vertices)
+	{
+		vertices.push_back(v);
+		vertices.back().position += positionOffset;
+		vertices.back().textureCoordinate += textureOffset * glm::vec2(0.1f, 0.1f);
 	}
 }
 

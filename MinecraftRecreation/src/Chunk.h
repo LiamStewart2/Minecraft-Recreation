@@ -3,6 +3,7 @@
 #include "Mesh.h"
 #include "config.h"
 #include "FaceData.h"
+#include "BlockDatabase.h"
 
 enum Block { Air, Grass };
 
@@ -23,5 +24,5 @@ public:
 private:
 	Mesh chunkMesh;
 
-	Block blockBuffer[config::chunkWidth * config::chunkHeight * config::chunkLayers];
+	BlockType* blockBuffer[config::chunkWidth * config::chunkHeight * config::chunkLayers];
 };
