@@ -1,8 +1,5 @@
 #include "Mesh.h"
 
-#include <cstddef>
-#include <iostream>
-
 void Mesh::loadMeshData(std::vector<Vertex>* Vertices)
 {
 	for (Vertex v : *Vertices)
