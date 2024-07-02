@@ -17,7 +17,8 @@ void Chunk::generateTerrain()
 			for (int y = 0; y < config::chunkLayers; y++)
 			{
 				int index = getIndexFromRelativePosition(x, y, z);
-				if (y > x + z)
+				//if (y > x + z)
+				if( y == 5 )
 					blockBuffer[index] = Grass;
 				else
 					blockBuffer[index] = Air;
