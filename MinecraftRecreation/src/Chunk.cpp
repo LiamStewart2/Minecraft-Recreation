@@ -28,7 +28,7 @@ void Chunk::generateTerrain()
 	}
 }
 
-void Chunk::generateChunkMesh()
+void Chunk::generateChunkMesh(TextureAtlas* textureAtlas)
 {
 	double t = glfwGetTime();
 	chunkMesh.setPosition(0, -10, 0);
@@ -44,19 +44,19 @@ void Chunk::generateChunkMesh()
 				if (currentBlock->air == false)
 				{
 					if (y < config::chunkLayers - 1 && blockBuffer[getIndexFromRelativePosition(x, y + 1, z)]->air)
-						chunkMesh.loadMeshData(&FaceData::TOP, glm::vec3(x, y, z), currentBlock->topTexture);
+						chunkMesh.loadMeshData(&FaceData::TOP, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->topTexture));
 					if (y > 0 && blockBuffer[getIndexFromRelativePosition(x, y - 1, z)]->air)
-						chunkMesh.loadMeshData(&FaceData::BOTTOM, glm::vec3(x, y, z), currentBlock->bottomTexture);
+						chunkMesh.loadMeshData(&FaceData::BOTTOM, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->bottomTexture));
 
 					if (x < config::chunkWidth - 1 && blockBuffer[getIndexFromRelativePosition(x + 1, y, z)]->air)
-						chunkMesh.loadMeshData(&FaceData::RIGHT, glm::vec3(x, y, z), currentBlock->sideTexture);
+						chunkMesh.loadMeshData(&FaceData::RIGHT, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->sideTexture));
 					if (x > 0 && blockBuffer[getIndexFromRelativePosition(x - 1, y, z)]->air)
-						chunkMesh.loadMeshData(&FaceData::LEFT, glm::vec3(x, y, z), currentBlock->sideTexture);
+						chunkMesh.loadMeshData(&FaceData::LEFT, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->sideTexture));
 
 					if (z < config::chunkHeight - 1 && blockBuffer[getIndexFromRelativePosition(x, y, z + 1)]->air)
-						chunkMesh.loadMeshData(&FaceData::BACK, glm::vec3(x, y, z), currentBlock->sideTexture);
+						chunkMesh.loadMeshData(&FaceData::BACK, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->sideTexture));
 					if (z > 0 && blockBuffer[getIndexFromRelativePosition(x, y, z - 1)]->air)
-						chunkMesh.loadMeshData(&FaceData::FRONT, glm::vec3(x, y, z), currentBlock->sideTexture);
+						chunkMesh.loadMeshData(&FaceData::FRONT, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->sideTexture));
 				}
 
 			}

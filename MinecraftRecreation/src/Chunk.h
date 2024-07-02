@@ -4,6 +4,7 @@
 #include "config.h"
 #include "FaceData.h"
 #include "BlockDatabase.h"
+#include "TextureAtlas.h"
 
 enum Block { Air, Grass };
 
@@ -14,7 +15,7 @@ public:
 	~Chunk();
 
 	void generateTerrain();
-	void generateChunkMesh();
+	void generateChunkMesh(TextureAtlas* textureAtlas);
 
 	Mesh* getChunkMesh() { return &chunkMesh; }
 

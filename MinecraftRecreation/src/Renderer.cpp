@@ -13,9 +13,8 @@ void Renderer::clear()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Renderer::render(Camera* camera, Mesh* mesh, Texture* tex)
+void Renderer::render(Camera* camera, Mesh* mesh)
 {
-    tex->useTexture();
     shader.useShader();
 
     mesh->BindMeshBuffer();

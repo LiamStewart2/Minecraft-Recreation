@@ -22,7 +22,7 @@ void Mesh::loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 positionOffset,
 	{
 		vertices.push_back(v);
 		vertices.back().position += positionOffset;
-		vertices.back().textureCoordinate += textureOffset * glm::vec2(0.1f, 0.1f);
+		vertices.back().textureCoordinate += textureOffset;
 	}
 }
 

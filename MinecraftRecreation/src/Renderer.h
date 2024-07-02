@@ -18,7 +18,7 @@ public:
 	void initialize();
 
 	void clear();
-	void render(Camera* camera, Mesh* mesh, Texture* tex);
+	void render(Camera* camera, Mesh* mesh);
 	void terminate();
 private:
 	Shader shader;

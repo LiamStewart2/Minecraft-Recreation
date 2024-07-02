@@ -69,12 +69,12 @@ void Application::init()
 
 void Application::start()
 {
+    textureAtlas.loadTextureAtlas("res/textures/atlas/blockAtlas.png", 10, 10);
+
     renderer.initialize();
 
     chunk.generateTerrain();
-    chunk.generateChunkMesh();
-
-    textureAtlas.loadTexture("res/textures/atlas/blockAtlas.png");
+    chunk.generateChunkMesh(&textureAtlas);
 }
 
 
@@ -107,7 +107,8 @@ void Application::render()
 {
     renderer.clear();
 
-    renderer.render(&camera, chunk.getChunkMesh(), &textureAtlas);
+    textureAtlas.useTexture();
+    renderer.render(&camera, chunk.getChunkMesh());
 
     glfwSwapBuffers(window);
 }

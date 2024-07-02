@@ -24,7 +24,7 @@ private:
 	GLFWwindow* window;
 	Renderer renderer;
 	Camera camera = Camera(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	Texture textureAtlas;
+	TextureAtlas textureAtlas;
 
 	Chunk chunk;
 

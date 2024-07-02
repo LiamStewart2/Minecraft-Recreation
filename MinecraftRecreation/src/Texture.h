@@ -10,7 +10,6 @@ class Texture
 public:
 	void loadTexture(const char* textureFilePath);
 	void useTexture();
-private:
 	unsigned int textureID = 0;
 	int width = 0; int height = 0; int nrChannels = 0;
 };
