@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BlockDatabase.cpp" />
     <ClCompile Include="src\Chunk.cpp" />
     <ClCompile Include="src\FaceData.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
@@ -147,8 +148,12 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\TextureAtlas.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BlockDatabase.h" />
+    <ClInclude Include="src\BlockType.h" />
     <ClInclude Include="src\Chunk.h" />
     <ClInclude Include="src\FaceData.h" />
     <ClInclude Include="src\Mesh.h" />
@@ -158,10 +163,17 @@
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Vertex.h" />
+    <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\TextureAtlas.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\default\shader.fs" />
     <None Include="res\shaders\default\shader.vs" />
+    <None Include="res\textures\atlas\blockAtlas.aseprite" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\atlas\blockAtlas.png" />
+    <Image Include="res\textures\atlas\dirt.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

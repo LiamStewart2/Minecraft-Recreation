@@ -61,10 +61,11 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     glAttachShader(shaderID, vertexShader);
     glAttachShader(shaderID, fragmentShader);
     glLinkProgram(shaderID);
-    checkCompileErrors(fragmentShader, "PROGRAM");
+    checkCompileErrors(shaderID, "PROGRAM");
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+
 }
 
 void Shader::checkCompileErrors(unsigned int shader, std::string type)

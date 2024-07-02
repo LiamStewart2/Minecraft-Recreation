@@ -19,7 +19,8 @@ public:
 	void setPosition(float x, float y, float z);
 
 	void loadMeshData(std::vector<Vertex>* Vertices);
-	void loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 offset);
+	void loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 positionOffset);
+	void loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 positionOffset, glm::vec2 textureOffset);
 
 	void generateMeshBuffers();
 

@@ -39,6 +39,15 @@
     <ClCompile Include="src\FaceData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BlockDatabase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextureAtlas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Mesh.h">
@@ -68,9 +77,30 @@
     <ClInclude Include="src\FaceData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\BlockType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BlockDatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TextureAtlas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\default\shader.fs" />
     <None Include="res\shaders\default\shader.vs" />
+    <None Include="res\textures\atlas\blockAtlas.aseprite" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\atlas\blockAtlas.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\atlas\dirt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

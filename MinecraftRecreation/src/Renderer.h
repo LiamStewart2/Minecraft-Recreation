@@ -7,6 +7,7 @@
 #include "Camera.h"
 #include "Mesh.h"
 #include "Vertex.h"
+#include "Texture.h"
 
 class Renderer
 {

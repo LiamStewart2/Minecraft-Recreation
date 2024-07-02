@@ -16,7 +16,10 @@ void Renderer::clear()
 void Renderer::render(Camera* camera, Mesh* mesh)
 {
     shader.useShader();
+
     mesh->BindMeshBuffer();
+
+    glUniform1i(glGetUniformLocation(shader.shaderID, "oTexture"), 0);
 
     glm::mat4 projection = glm::perspective(glm::radians(camera->zoom), (float)config::resolutionX / (float)config::resolutionY, 0.1f, 100.0f);
 
@@ -25,6 +28,11 @@ void Renderer::render(Camera* camera, Mesh* mesh)
     shader.setMat4("projection", projection);
 
     glDrawArrays(GL_TRIANGLES, 0, mesh->getNumberOfVertices());
+
+    GLenum err;
+    while ((err = glGetError()) != GL_NO_ERROR) {
+        std::cerr << "OpenGL error: " << err << std::endl;
+    }
 }
 
 void Renderer::terminate()
