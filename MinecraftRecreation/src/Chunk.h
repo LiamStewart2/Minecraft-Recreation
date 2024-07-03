@@ -20,7 +20,7 @@ public:
 
 	Mesh* getChunkMesh() { return &chunkMesh; }
 
-	Block getBlockAtPosition(int x, int y, int z);
+	BlockType* getBlockAtPosition(int x, int y, int z);
 	int getIndexFromRelativePosition(int x, int y, int z);
 
 	glm::vec2 getWorldPosition() { return chunkWorldPosition; }

@@ -28,11 +28,6 @@ void Renderer::render(Camera* camera, Mesh* mesh)
     shader.setMat4("projection", projection);
 
     glDrawArrays(GL_TRIANGLES, 0, mesh->getNumberOfVertices());
-
-    GLenum err;
-    while ((err = glGetError()) != GL_NO_ERROR) {
-        std::cerr << "OpenGL error: " << err << std::endl;
-    }
 }
 
 void Renderer::terminate()

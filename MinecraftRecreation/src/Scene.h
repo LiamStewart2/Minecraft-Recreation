@@ -11,6 +11,7 @@ class Scene
 {
 public:
 	void initChunkMap(glm::vec2 size, TextureAtlas* textureAtlas);
+
 	void renderScene(Renderer* renderer, Camera* camera);
 
 	Chunk* getChunk(glm::vec2 chunkPosition);

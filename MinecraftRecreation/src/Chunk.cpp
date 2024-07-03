@@ -1,5 +1,7 @@
 #include "Chunk.h"
 
+#include "Scene.h"
+
 void Chunk::generateTerrain()
 {
 	for (int x = 0; x < config::chunkWidth; x++)
@@ -22,8 +24,6 @@ void Chunk::generateTerrain()
 
 void Chunk::generateChunkMesh(TextureAtlas* textureAtlas)
 {
-	double t = glfwGetTime();
-
 	chunkMesh.setPosition(chunkWorldPosition.x * config::chunkWidth, 0, chunkWorldPosition.y * config::chunkHeight);
 
 	for (int x = 0; x < config::chunkWidth; x++)
@@ -37,19 +37,19 @@ void Chunk::generateChunkMesh(TextureAtlas* textureAtlas)
 
 				if (currentBlock->air == false)
 				{
-					if (y < config::chunkLayers - 1 && blockBuffer[getIndexFromRelativePosition(x, y + 1, z)]->air)
+					if (y < config::chunkLayers - 1 && getBlockAtPosition(x, y + 1, z)->air)
 						chunkMesh.loadMeshData(&FaceData::TOP, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->topTexture));
-					if (y > 0 && blockBuffer[getIndexFromRelativePosition(x, y - 1, z)]->air)
+					if (y > 0 && getBlockAtPosition(x, y - 1, z)->air)
 						chunkMesh.loadMeshData(&FaceData::BOTTOM, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->bottomTexture));
 
-					if (x < config::chunkWidth - 1 && blockBuffer[getIndexFromRelativePosition(x + 1, y, z)]->air)
+					if (x < config::chunkWidth - 1 && getBlockAtPosition(x + 1, y, z)->air)
 						chunkMesh.loadMeshData(&FaceData::RIGHT, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->sideTexture));
-					if (x > 0 && blockBuffer[getIndexFromRelativePosition(x - 1, y, z)]->air)
+					if (x > 0 && getBlockAtPosition(x - 1, y, z)->air)
 						chunkMesh.loadMeshData(&FaceData::LEFT, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->sideTexture));
 
-					if (z < config::chunkHeight - 1 && blockBuffer[getIndexFromRelativePosition(x, y, z + 1)]->air)
+					if (z < config::chunkHeight - 1 && getBlockAtPosition(x, y, z + 1)->air)
 						chunkMesh.loadMeshData(&FaceData::BACK, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->sideTexture));
-					if (z > 0 && blockBuffer[getIndexFromRelativePosition(x, y, z - 1)]->air)
+					if (z > 0 && getBlockAtPosition(x, y, z - 1)->air)
 						chunkMesh.loadMeshData(&FaceData::FRONT, glm::vec3(x, y, z), textureAtlas->getTextureCoordinateOffset(currentBlock->sideTexture));
 				}
 
@@ -57,12 +57,11 @@ void Chunk::generateChunkMesh(TextureAtlas* textureAtlas)
 		}
 	}
 	chunkMesh.generateMeshBuffers();
-	std::cout << glfwGetTime() - t << ": Time to generate chunk" << std::endl;
 }
 
-Block Chunk::getBlockAtPosition(int x, int y, int z)
+BlockType* Chunk::getBlockAtPosition(int x, int y, int z)
 {
-	return Block();
+	return blockBuffer[getIndexFromRelativePosition(x, y, z)];
 }
 
 int Chunk::getIndexFromRelativePosition(int x, int y, int z)

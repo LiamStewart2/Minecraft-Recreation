@@ -20,7 +20,6 @@ void Texture::loadTexture(const char* textureFilePath)
 		GLint channel = -1;
 		if (nrChannels == 3)
 		{
-			std::cout << "yyup";
 			channel = GL_RGB;
 		}
 		else
