@@ -18,5 +18,5 @@ struct config {
 	// World Settings
 	const static unsigned int chunkWidth = 16;
 	const static unsigned int chunkHeight = 16;
-	const static unsigned int chunkLayers = 32;
+	const static unsigned int chunkLayers = 64;
 };

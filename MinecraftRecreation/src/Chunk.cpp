@@ -1,13 +1,5 @@
 #include "Chunk.h"
 
-Chunk::Chunk()
-{
-}
-
-Chunk::~Chunk()
-{
-}
-
 void Chunk::generateTerrain()
 {
 	for (int x = 0; x < config::chunkWidth; x++)
@@ -31,7 +23,9 @@ void Chunk::generateTerrain()
 void Chunk::generateChunkMesh(TextureAtlas* textureAtlas)
 {
 	double t = glfwGetTime();
-	chunkMesh.setPosition(0, -10, 0);
+
+	chunkMesh.setPosition(chunkWorldPosition.x * config::chunkWidth, 0, chunkWorldPosition.y * config::chunkHeight);
+
 	for (int x = 0; x < config::chunkWidth; x++)
 	{
 		for (int z = 0; z < config::chunkHeight; z++)

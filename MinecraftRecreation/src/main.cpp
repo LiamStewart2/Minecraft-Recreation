@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    Application application;
+    Application* application = new Application();
 
     return 0;
 }

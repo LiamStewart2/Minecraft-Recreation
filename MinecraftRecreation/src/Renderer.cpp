@@ -21,7 +21,7 @@ void Renderer::render(Camera* camera, Mesh* mesh)
 
     glUniform1i(glGetUniformLocation(shader.shaderID, "oTexture"), 0);
 
-    glm::mat4 projection = glm::perspective(glm::radians(camera->zoom), (float)config::resolutionX / (float)config::resolutionY, 0.1f, 100.0f);
+    glm::mat4 projection = glm::perspective(glm::radians(camera->zoom), (float)config::resolutionX / (float)config::resolutionY, 0.1f, 2000.0f);
 
     shader.setMat4("model", mesh->getModel());
     shader.setMat4("view", camera->getViewMatrix());

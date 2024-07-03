@@ -32,7 +32,7 @@ void Application::init()
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        window = glfwCreateWindow(config::resolutionX, config::resolutionY, "Minecraft Recreation", NULL, NULL);
+        window = glfwCreateWindow(config::resolutionX, config::resolutionY, "Minecraft Recreation", glfwGetPrimaryMonitor(), NULL);
         glfwMaximizeWindow(window);
         if (!window)
         {
@@ -73,6 +73,8 @@ void Application::start()
 
     renderer.initialize();
 
+    scene.initChunkMap(glm::vec2(32, 32), &textureAtlas);
+
     chunk.generateTerrain();
     chunk.generateChunkMesh(&textureAtlas);
 }
@@ -83,10 +85,14 @@ void Application::mainloop()
 {
     while (!glfwWindowShouldClose(window))
     {
+        double t = glfwGetTime();
+
         update();
         render();
 
         handleEvents();
+
+        std::cout << 1 / (glfwGetTime() - t) << " frames per second\n";
     }
 }
 
@@ -108,7 +114,10 @@ void Application::render()
     renderer.clear();
 
     textureAtlas.useTexture();
-    renderer.render(&camera, chunk.getChunkMesh());
+
+    scene.renderScene(&renderer, &camera);
+
+    //renderer.render(&camera, chunk.getChunkMesh());
 
     glfwSwapBuffers(window);
 }
