@@ -75,7 +75,7 @@ void Application::start()
     renderer.initialize();
 
     double t = glfwGetTime();
-    scene.initChunkMap(glm::vec2(8, 8), &textureAtlas);
+    scene.initChunkMap(glm::vec2(32, 32), &textureAtlas);
     std::cout << glfwGetTime() - t << " seconds to build the map\n";
 }
 

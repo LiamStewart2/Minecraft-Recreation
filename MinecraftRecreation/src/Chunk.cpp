@@ -9,8 +9,8 @@ void Chunk::generateTerrain()
 		for (int z = 0; z < config::chunkHeight; z++)
 		{
 			glm::vec3 blockWorldPosition = getBlockWorldPosition(glm::vec3(x, 0, z));
-
-			int height = sin((blockWorldPosition.x + blockWorldPosition.z) * 0.1f) * 5 + 16;
+			float a = sin((blockWorldPosition.x + blockWorldPosition.z) * 0.1f);
+			int height = a * 3 + 16;
 			for (int y = 0; y < config::chunkLayers; y++)
 			{
 				int index = getIndexFromRelativePosition(x, y, z);
