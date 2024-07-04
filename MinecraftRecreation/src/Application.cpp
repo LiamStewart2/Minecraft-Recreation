@@ -93,7 +93,7 @@ void Application::mainloop()
         handleEvents();
 
         // The Framerate
-        //std::cout << 1 / (glfwGetTime() - t) << " frames per second\n";
+        std::cout << 1 / (glfwGetTime() - t) << " frames per second\n";
     }
 }
 

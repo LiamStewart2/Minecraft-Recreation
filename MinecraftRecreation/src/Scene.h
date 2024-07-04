@@ -26,4 +26,6 @@ private:
 
 	void updateAllChunkEdges();
 	void updateChunkEdges(Chunk* chunk);
+
+	void dynamicChunkLoading(Camera* camera);
 };
