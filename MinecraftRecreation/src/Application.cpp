@@ -32,8 +32,8 @@ void Application::init()
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        //window = glfwCreateWindow(config::resolutionX, config::resolutionY, "Minecraft Recreation", glfwGetPrimaryMonitor(), NULL);
-        window = glfwCreateWindow(config::resolutionX, config::resolutionY, "Minecraft Recreation", NULL, NULL);
+        window = glfwCreateWindow(config::resolutionX, config::resolutionY, "Minecraft Recreation", glfwGetPrimaryMonitor(), NULL);
+        //window = glfwCreateWindow(config::resolutionX, config::resolutionY, "Minecraft Recreation", NULL, NULL);
         glfwMaximizeWindow(window);
         if (!window)
         {
@@ -75,7 +75,7 @@ void Application::start()
     renderer.initialize();
 
     double t = glfwGetTime();
-    scene.initChunkMap(glm::vec2(32, 32), &textureAtlas);
+    scene.initChunkMap(glm::vec2(config::renderDistance, config::renderDistance), &textureAtlas);
     std::cout << glfwGetTime() - t << " seconds to build the map\n";
 }
 
@@ -100,6 +100,8 @@ void Application::mainloop()
 void Application::update()
 {
     camera.processKeyboard(window);
+
+    scene.update(&camera);
 }
 
 void Application::handleEvents()
