@@ -16,8 +16,8 @@ struct config {
 	const static int pitch = 0;
 
 	// World Settings
-	const static unsigned int chunkWidth = 32;
-	const static unsigned int chunkHeight = 32;
+	const static unsigned int chunkWidth = 64;
+	const static unsigned int chunkHeight = 64;
 	const static unsigned int chunkLayers = 64;
 
 	const static int renderDistance = 32;
