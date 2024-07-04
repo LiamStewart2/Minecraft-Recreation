@@ -8,13 +8,18 @@ void Chunk::generateTerrain()
 	{
 		for (int z = 0; z < config::chunkHeight; z++)
 		{
+			glm::vec3 blockWorldPosition = getBlockWorldPosition(glm::vec3(x, 0, z));
+
+			int height = sin((blockWorldPosition.x + blockWorldPosition.z) * 0.1f) * 5 + 16;
 			for (int y = 0; y < config::chunkLayers; y++)
 			{
 				int index = getIndexFromRelativePosition(x, y, z);
-				if (y < x + z + 2)
+
+
+				if (y == height)
 					blockBuffer[index] = &BlockDatabase::Grass;
-				else if (y == 15)
-					blockBuffer[index] = &BlockDatabase::Stone;
+				else if(y < height)
+					blockBuffer[index] = &BlockDatabase::Dirt;
 				else
 					blockBuffer[index] = &BlockDatabase::Air;
 			}
@@ -56,6 +61,10 @@ void Chunk::generateChunkMesh(TextureAtlas* textureAtlas)
 			}
 		}
 	}
+}
+
+void Chunk::updateChunkMeshBuffers()
+{
 	chunkMesh.generateMeshBuffers();
 }
 
@@ -68,4 +77,11 @@ int Chunk::getIndexFromRelativePosition(int x, int y, int z)
 {
 	int index = (y * config::chunkWidth * config::chunkHeight) + (z * config::chunkHeight) + x;
 	return index;
+}
+
+glm::vec3 Chunk::getBlockWorldPosition(glm::vec3 relativeBlockPosition)
+{
+	int xPosition = chunkWorldPosition.x * config::chunkWidth + relativeBlockPosition.x;
+	int zPosition = chunkWorldPosition.y * config::chunkHeight + relativeBlockPosition.z;
+	return glm::vec3(xPosition, relativeBlockPosition.y, zPosition);
 }

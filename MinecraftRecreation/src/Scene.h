@@ -17,4 +17,6 @@ public:
 	Chunk* getChunk(glm::vec2 chunkPosition);
 private:
 	std::vector<Chunk*> chunkMap;
+
+	void updateChunkEdges(TextureAtlas* textureAtlas);
 };

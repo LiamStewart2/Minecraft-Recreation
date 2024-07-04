@@ -6,6 +6,7 @@ struct BlockDatabase
 {
 	static BlockType Air;
 	static BlockType Grass;
+	static BlockType Dirt;
 	static BlockType Stone;
 };
 

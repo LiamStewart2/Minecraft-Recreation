@@ -6,8 +6,6 @@
 #include "BlockDatabase.h"
 #include "TextureAtlas.h"
 
-enum Block { Air, Grass };
-
 class Chunk
 {
 public:
@@ -17,6 +15,8 @@ public:
 
 	void generateTerrain();
 	void generateChunkMesh(TextureAtlas* textureAtlas);
+	void updateChunkMeshBuffers();
+
 
 	Mesh* getChunkMesh() { return &chunkMesh; }
 
@@ -24,8 +24,9 @@ public:
 	int getIndexFromRelativePosition(int x, int y, int z);
 
 	glm::vec2 getWorldPosition() { return chunkWorldPosition; }
-private:
+	glm::vec3 getBlockWorldPosition(glm::vec3 relativeBlockPosition);
 	Mesh chunkMesh;
+private:
 	glm::vec2 chunkWorldPosition = glm::vec2(0,0);
 
 	BlockType* blockBuffer[config::chunkWidth * config::chunkHeight * config::chunkLayers];
