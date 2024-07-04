@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\BlockDatabase.cpp" />
     <ClCompile Include="src\Chunk.cpp" />
     <ClCompile Include="src\FaceData.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="src\TextureAtlas.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\BlockDatabase.h" />
     <ClInclude Include="src\BlockType.h" />
     <ClInclude Include="src\Chunk.h" />

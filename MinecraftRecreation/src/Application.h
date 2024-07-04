@@ -11,6 +11,7 @@
 #include "Mesh.h"
 #include "Chunk.h"
 #include "Texture.h"
+#include "Scene.h"
 
 class Application
 {
@@ -26,6 +27,7 @@ private:
 	Camera camera = Camera(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 	TextureAtlas textureAtlas;
 
+	Scene scene;
 	Chunk chunk;
 
 	float mouseXPos = -1; float mouseYPos = -1;
