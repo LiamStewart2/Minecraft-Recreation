@@ -42,5 +42,7 @@ private:
 	void render();
 
 	void terminate();
+
+	bool shouldClose = false;
 };
 

@@ -21,6 +21,8 @@ public:
 	void update(Camera* camera);
 	void renderScene(Renderer* renderer, Camera* camera);
 
+	void deleteAllChunks();
+	
 	Chunk* getChunk(glm::vec2 chunkPosition);
 private:
 	TextureAtlas* texture;
@@ -38,5 +40,6 @@ private:
 
 	double chunkGenerationAllowance = (1.0f / 1000.0f) * 2.0f;
 	void addChunkToGenerationQueue(glm::vec2 chunkPosition);
+	void removeChunkFromGenerationQueue(glm::vec2 chunkPosition);
 	bool isPositionInChunkGenerationQueue(glm::vec2 chunkPosition);
 };

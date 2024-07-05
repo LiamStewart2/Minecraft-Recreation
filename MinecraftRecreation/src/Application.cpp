@@ -83,7 +83,7 @@ void Application::start()
 
 void Application::mainloop()
 {
-    while (!glfwWindowShouldClose(window))
+    while (!glfwWindowShouldClose(window) && !shouldClose)
     {
         double t = glfwGetTime();
 
@@ -106,8 +106,11 @@ void Application::update()
 
 void Application::handleEvents()
 {
+
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwDestroyWindow(window);
+        shouldClose = true;
+    if(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+        scene.deleteAllChunks();
 
     glfwPollEvents();
 }
@@ -129,6 +132,8 @@ void Application::render()
 
 void Application::terminate()
 {
+    glfwDestroyWindow(window);
+    window = nullptr;
     glfwTerminate();
     renderer.terminate();
 }

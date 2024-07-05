@@ -18,14 +18,6 @@ void Scene::initChunkMap(TextureAtlas* textureAtlas)
 		}
 	}
     updateAllChunkEdges();
-
-    addChunkToGenerationQueue(glm::vec2(2, 2));
-    if(isPositionInChunkGenerationQueue(glm::vec2(2, 2)))
-        std::cout << "yup\n";
-    if(isPositionInChunkGenerationQueue(glm::vec2(2, 2)))
-        std::cout << "yup\n";
-    if(isPositionInChunkGenerationQueue(glm::vec2(1, 2)))
-        std::cout << "yup\n";
 }
 
 void Scene::chunkGenerationQueueManager()
@@ -158,8 +150,6 @@ void Scene::dynamicChunkLoading(Camera* camera)
     if (currentCameraChunkPos == lastCameraChunkPos)
         return;
 
-    std::vector<Chunk*> newChunks = std::vector<Chunk*>();
-
     //Load new chunks
     if (lastCameraChunkPos.x < currentCameraChunkPos.x)
     {
@@ -172,14 +162,20 @@ void Scene::dynamicChunkLoading(Camera* camera)
                 addChunkToGenerationQueue(newChunkPosition);
 
             // delete old chunk
-            Chunk* oldChunk = getChunk(glm::vec2(currentCameraChunkPos.x - config::renderDistance - 1, currentCameraChunkPos.y + i));
+
+            glm::vec2 oldChunkPosition = glm::vec2(currentCameraChunkPos.x - config::renderDistance - 1, currentCameraChunkPos.y + i);
+
+            if (isPositionInChunkGenerationQueue(oldChunkPosition))
+                removeChunkFromGenerationQueue(oldChunkPosition);
+
+            Chunk* oldChunk = getChunk(oldChunkPosition);
             while (oldChunk != nullptr)
             {
                 chunkMap.erase(std::remove(chunkMap.begin(), chunkMap.end(), oldChunk));
 
                 delete oldChunk;
 
-                oldChunk = getChunk(glm::vec2(currentCameraChunkPos.x - config::renderDistance - 1, currentCameraChunkPos.y + i));
+                oldChunk = getChunk(oldChunkPosition);
             }
         }
     }
@@ -195,14 +191,20 @@ void Scene::dynamicChunkLoading(Camera* camera)
                 addChunkToGenerationQueue(newChunkPosition);
 
             // delete old chunk
-            Chunk* oldChunk = getChunk(glm::vec2(currentCameraChunkPos.x + config::renderDistance + 1, currentCameraChunkPos.y + i));
+
+            glm::vec2 oldChunkPosition = glm::vec2(currentCameraChunkPos.x + config::renderDistance + 1, currentCameraChunkPos.y + i);
+
+            if (isPositionInChunkGenerationQueue(oldChunkPosition))
+                removeChunkFromGenerationQueue(oldChunkPosition);
+
+            Chunk* oldChunk = getChunk(oldChunkPosition);
             while (oldChunk != nullptr)
             {
                 chunkMap.erase(std::remove(chunkMap.begin(), chunkMap.end(), oldChunk));
 
                 delete oldChunk;
 
-                oldChunk = getChunk(glm::vec2(currentCameraChunkPos.x + config::renderDistance + 1, currentCameraChunkPos.y + i));
+                oldChunk = getChunk(oldChunkPosition);
             }
         }
     }
@@ -218,14 +220,20 @@ void Scene::dynamicChunkLoading(Camera* camera)
                 addChunkToGenerationQueue(newChunkPosition);
 
             // delete old chunk
-            Chunk* oldChunk = getChunk(glm::vec2(currentCameraChunkPos.x + i, currentCameraChunkPos.y - config::renderDistance - 1));
+
+            glm::vec2 oldChunkPosition = glm::vec2(currentCameraChunkPos.x + i, currentCameraChunkPos.y - config::renderDistance - 1);
+
+            if (isPositionInChunkGenerationQueue(oldChunkPosition))
+                removeChunkFromGenerationQueue(oldChunkPosition);
+
+            Chunk* oldChunk = getChunk(oldChunkPosition);
             while (oldChunk != nullptr)
             {
                 chunkMap.erase(std::remove(chunkMap.begin(), chunkMap.end(), oldChunk));
 
                 delete oldChunk;
 
-                oldChunk = getChunk(glm::vec2(currentCameraChunkPos.x + i, currentCameraChunkPos.y - config::renderDistance - 1));
+                oldChunk = getChunk(oldChunkPosition);
             }
         }
     }
@@ -242,14 +250,20 @@ void Scene::dynamicChunkLoading(Camera* camera)
             else
                 std::cout << newChunkPosition.x << ":" << newChunkPosition.y << "\n";
             // delete old chunk
-            Chunk* oldChunk = getChunk(glm::vec2(currentCameraChunkPos.x + i, currentCameraChunkPos.y + config::renderDistance + 1));
+            
+            glm::vec2 oldChunkPosition = glm::vec2(currentCameraChunkPos.x + i, currentCameraChunkPos.y + config::renderDistance + 1);
+
+            if(isPositionInChunkGenerationQueue(oldChunkPosition))
+                removeChunkFromGenerationQueue(oldChunkPosition);
+
+            Chunk* oldChunk = getChunk(oldChunkPosition);
             while (oldChunk != nullptr)
             {
                 chunkMap.erase(std::remove(chunkMap.begin(), chunkMap.end(), oldChunk));
 
                 delete oldChunk;
 
-                oldChunk = getChunk(glm::vec2(currentCameraChunkPos.x + i, currentCameraChunkPos.y + config::renderDistance + 1));
+                oldChunk = getChunk(oldChunkPosition);
             }
         }
     }
@@ -278,6 +292,14 @@ void Scene::addChunkToGenerationQueue(glm::vec2 chunkPosition)
     chunkGenerationQueue.push_back(chunkPosition);
 }
 
+void Scene::removeChunkFromGenerationQueue(glm::vec2 chunkPosition)
+{
+    auto it = std::find(chunkGenerationQueue.begin(), chunkGenerationQueue.end(), chunkPosition);
+    if (it != chunkGenerationQueue.end()) {
+        chunkGenerationQueue.erase(it);
+    }
+}
+
 bool Scene::isPositionInChunkGenerationQueue(glm::vec2 chunkPosition)
 {
     for (int i = 0; i < chunkGenerationQueue.size(); i++)
@@ -286,4 +308,18 @@ bool Scene::isPositionInChunkGenerationQueue(glm::vec2 chunkPosition)
             return true;
     }
     return false;
+}
+
+void Scene::deleteAllChunks()
+{
+    for (Chunk* chunk : chunkMap)
+    {
+        delete chunk;
+    }
+
+    std::cout << sizeof(Chunk) << std::endl;
+    std::cout << sizeof(Mesh) << std::endl;
+    std::cout << sizeof(BlockType*) * config::chunkWidth * config::chunkHeight * config::chunkLayers << std::endl;
+
+    chunkMap.clear();
 }
