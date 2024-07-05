@@ -4,14 +4,7 @@
 
 Chunk::~Chunk()
 {
-	/*
-	for (int i = 0; i < config::chunkWidth * config::chunkHeight * config::chunkLayers; i++)
-	{
-		if(blockBuffer[i])
-			blockBuffer[i] = nullptr;
-	}
-	delete[] blockBuffer;
-	*/
+	std::cout << sizeof(chunkMesh) << "\n";
 }
 
 void Chunk::generateTerrain()
@@ -21,10 +14,10 @@ void Chunk::generateTerrain()
 		for (int z = 0; z < config::chunkHeight; z++)
 		{
 			glm::vec3 blockWorldPosition = getBlockWorldPosition(glm::vec3(x, 0, z));
-			//float a = sin((blockWorldPosition.x * blockWorldPosition.z) * 0.1f);
-			//int height = a * 3 + 16;
+			float a = sin((blockWorldPosition.x * blockWorldPosition.z) * 0.1f);
+			int height = a * 3 + 16;
 
-			int height = sin(x*2 * z+1 * 0.001f) * 5;
+			//int height = sin(x*2 * z+1 * 0.001f) * 5;
 
 			for (int y = 0; y < config::chunkLayers; y++)
 			{
