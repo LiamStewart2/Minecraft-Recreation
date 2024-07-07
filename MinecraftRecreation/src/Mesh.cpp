@@ -2,22 +2,24 @@
 
 void Mesh::loadMeshData(std::vector<Vertex>* Vertices)
 {
-	for (Vertex v : *Vertices)
-		vertices.push_back(v);
+	for (int i = 0; i < Vertices->size(); i++)
+	{
+		vertices.push_back(Vertices->at(i));
+	}
 }
 void Mesh::loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 positionOffset)
 {
-	for (Vertex v : *Vertices)
+	for (int i = 0; i < Vertices->size(); i++)
 	{
-		vertices.push_back(v);
+		vertices.push_back(Vertices->at(i));
 		vertices.back().position += positionOffset;
 	}
 }
 void Mesh::loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 positionOffset, glm::vec2 textureOffset)
 {
-	for (Vertex v : *Vertices)
+	for (int i = 0; i < Vertices->size(); i++)
 	{
-		vertices.push_back(v);
+		vertices.push_back(Vertices->at(i));
 		vertices.back().position += positionOffset;
 		vertices.back().textureCoordinate += textureOffset;
 	}
@@ -60,6 +62,8 @@ void Mesh::BindMeshBuffer()
 
 void Mesh::clean()
 {
+	vertices.clear();
+
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 }
