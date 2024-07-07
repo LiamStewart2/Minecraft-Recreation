@@ -15,7 +15,7 @@ class Mesh
 {
 public:
 	Mesh() { model = glm::mat4(1.0f); }
-	~Mesh() {}
+	~Mesh() {clean(); }
 
 	void setPosition(float x, float y, float z);
 
