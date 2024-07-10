@@ -4,7 +4,7 @@
 
 Chunk::~Chunk()
 {
-	std::cout << sizeof(chunkMesh) << "\n";
+	chunkMesh.clean();
 }
 
 void Chunk::generateTerrain()

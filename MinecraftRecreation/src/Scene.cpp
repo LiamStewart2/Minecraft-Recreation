@@ -247,8 +247,6 @@ void Scene::dynamicChunkLoading(Camera* camera)
             glm::vec2 newChunkPosition = glm::vec2(currentCameraChunkPos.x + i, currentCameraChunkPos.y - config::renderDistance);
             if (getChunk(newChunkPosition) == nullptr && isPositionInChunkGenerationQueue(newChunkPosition) == false)
                 addChunkToGenerationQueue(newChunkPosition);
-            else
-                std::cout << newChunkPosition.x << ":" << newChunkPosition.y << "\n";
             // delete old chunk
             
             glm::vec2 oldChunkPosition = glm::vec2(currentCameraChunkPos.x + i, currentCameraChunkPos.y + config::renderDistance + 1);
@@ -316,10 +314,6 @@ void Scene::deleteAllChunks()
     {
         delete chunk;
     }
-
-    std::cout << sizeof(Chunk) << std::endl;
-    std::cout << sizeof(Mesh) << std::endl;
-    std::cout << sizeof(BlockType*) * config::chunkWidth * config::chunkHeight * config::chunkLayers << std::endl;
 
     chunkMap.clear();
 }
