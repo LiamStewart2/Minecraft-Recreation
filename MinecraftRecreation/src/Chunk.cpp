@@ -5,6 +5,11 @@
 Chunk::~Chunk()
 {
 	chunkMesh.clean();
+
+	for (int i = 0; i < config::chunkWidth * config::chunkHeight * config::chunkLayers; i++)
+	{
+		blockBuffer[i] = nullptr;
+	}
 }
 
 void Chunk::generateTerrain()
