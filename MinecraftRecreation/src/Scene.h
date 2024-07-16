@@ -30,6 +30,7 @@ private:
 	std::deque<glm::vec2> chunkGenerationQueue;
 
 	PerlinNoise terrainMapNoise;
+
 	glm::vec2 lastCameraChunkPos = glm::vec2(0,0);
 
 	void updateAllChunkEdges();

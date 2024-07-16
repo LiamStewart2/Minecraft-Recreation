@@ -3,6 +3,7 @@
 void Scene::initChunkMap(TextureAtlas* textureAtlas)
 {
     terrainMapNoise = PerlinNoise(config::SEED);
+
 	chunkMap.clear();
     texture = textureAtlas;
 
