@@ -194,15 +194,15 @@ void Scene::dynamicChunkLoading(Camera* camera)
 
             glm::vec2 oldChunkPosition = glm::vec2(currentCameraChunkPos.x + config::renderDistance + 1, currentCameraChunkPos.y + i);
 
-            if (isPositionInChunkGenerationQueue(oldChunkPosition))
-                removeChunkFromGenerationQueue(oldChunkPosition);
+                if (isPositionInChunkGenerationQueue(oldChunkPosition))
+                    removeChunkFromGenerationQueue(oldChunkPosition);
 
-            Chunk* oldChunk = getChunk(oldChunkPosition);
+                Chunk* oldChunk = getChunk(oldChunkPosition);
             while (oldChunk != nullptr)
-            {
-                chunkMap.erase(std::remove(chunkMap.begin(), chunkMap.end(), oldChunk));
+                {
+                    chunkMap.erase(std::remove(chunkMap.begin(), chunkMap.end(), oldChunk));
 
-                delete oldChunk;
+                    delete oldChunk;
 
                 oldChunk = getChunk(oldChunkPosition);
             }

@@ -35,6 +35,6 @@ private:
 	std::vector<Vertex> vertices;
 	glm::mat4 model;
 
-	unsigned int VAO = 0;
-	unsigned int VBO = 0;
+	GLuint VAO = 0;
+	GLuint VBO = 0;
 };

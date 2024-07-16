@@ -28,6 +28,12 @@ void Mesh::loadMeshData(std::vector<Vertex>* Vertices, glm::vec3 positionOffset,
 
 void Mesh::generateMeshBuffers()
 {
+	if (VBO != 0 || VAO != 0)
+	{
+		glDeleteVertexArrays(1, &VAO);
+		glDeleteBuffers(1, &VBO);
+	}
+
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 
@@ -62,8 +68,13 @@ void Mesh::BindMeshBuffer()
 
 void Mesh::clean()
 {
-	vertices.clear();
-
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
+
+
+	std::cout << sizeof(Vertex) << std::endl;
+	vertices.erase(vertices.begin(), vertices.end());
+	vertices.clear();
+	vertices.shrink_to_fit();
+
 }
