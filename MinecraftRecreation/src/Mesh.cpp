@@ -71,8 +71,6 @@ void Mesh::clean()
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 
-
-	std::cout << sizeof(Vertex) << std::endl;
 	vertices.erase(vertices.begin(), vertices.end());
 	vertices.clear();
 	vertices.shrink_to_fit();

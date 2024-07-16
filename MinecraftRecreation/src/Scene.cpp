@@ -153,7 +153,6 @@ void Scene::dynamicChunkLoading(Camera* camera)
     //Load new chunks
     if (lastCameraChunkPos.x < currentCameraChunkPos.x)
     {
-        std::cout << "+X\n"; 
         //moved increase x
         for (int i = config::renderDistance * -1; i <= config::renderDistance; i++)
         {
@@ -181,7 +180,6 @@ void Scene::dynamicChunkLoading(Camera* camera)
     }
     if (lastCameraChunkPos.x > currentCameraChunkPos.x)
     {
-        std::cout << "-X\n";
         //moved decrease x
         for (int i = config::renderDistance * -1; i <= config::renderDistance; i++)
         {
@@ -211,7 +209,6 @@ void Scene::dynamicChunkLoading(Camera* camera)
 
     if (lastCameraChunkPos.y < currentCameraChunkPos.y)
     {
-        std::cout << "+Y\n";
         //move increased y
         for (int i = config::renderDistance * -1; i <= config::renderDistance; i++)
         {
@@ -239,9 +236,7 @@ void Scene::dynamicChunkLoading(Camera* camera)
     }
     if (lastCameraChunkPos.y > currentCameraChunkPos.y)
     {
-
         //moved decreased y
-        std::cout << "-Y\n";
         for (int i = config::renderDistance * -1; i <= config::renderDistance; i++)
         {
             glm::vec2 newChunkPosition = glm::vec2(currentCameraChunkPos.x + i, currentCameraChunkPos.y - config::renderDistance);
