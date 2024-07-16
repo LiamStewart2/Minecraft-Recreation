@@ -12,6 +12,7 @@
 #include "Renderer.h"
 #include "Camera.h"
 #include "TextureAtlas.h"
+#include "PerlinNoise.h"
 
 class Scene
 {
@@ -28,6 +29,7 @@ private:
 	std::vector<Chunk*> chunkMap;
 	std::deque<glm::vec2> chunkGenerationQueue;
 
+	PerlinNoise terrainMapNoise;
 	glm::vec2 lastCameraChunkPos = glm::vec2(0,0);
 
 	void updateAllChunkEdges();

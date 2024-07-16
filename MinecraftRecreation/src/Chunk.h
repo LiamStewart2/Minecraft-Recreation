@@ -5,7 +5,7 @@
 #include "FaceData.h"
 #include "BlockDatabase.h"
 #include "TextureAtlas.h"
-
+#include "PerlinNoise.h"
 
 class Chunk
 {
@@ -14,7 +14,7 @@ public:
 	Chunk(glm::vec2 chunkPosition) {chunkWorldPosition = chunkPosition;}
 	~Chunk();
 
-	void generateTerrain();
+	void generateTerrain(PerlinNoise* terrainGenerationNoise);
 	void generateChunkMesh(TextureAtlas* textureAtlas);
 	void updateChunkMeshBuffers();
 

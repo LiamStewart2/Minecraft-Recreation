@@ -11,17 +11,17 @@ Chunk::~Chunk()
 	}
 }
 
-void Chunk::generateTerrain()
+void Chunk::generateTerrain(PerlinNoise* terrainGenerationNoise)
 {
 	for (int x = 0; x < config::chunkWidth; x++)
 	{
 		for (int z = 0; z < config::chunkHeight; z++)
 		{
 			glm::vec3 blockWorldPosition = getBlockWorldPosition(glm::vec3(x, 0, z));
-			float a = sin((blockWorldPosition.x + blockWorldPosition.z) * 0.1f);
-			int height = a * 3 + 16;
 
-			//int height = sin(x*2 * z+1 * 0.001f) * 5;
+			double heightValue = terrainGenerationNoise->octaveNoise((blockWorldPosition.x + config::chunkWidth * 128) / config::chunkWidth, (blockWorldPosition.z + config::chunkHeight * 128) / config::chunkHeight, 3, 0.3);
+			int height = (config::chunkHeight / 2) + static_cast<int>((config::chunkHeight * heightValue * 0.5));
+
 
 			for (int y = 0; y < config::chunkLayers; y++)
 			{

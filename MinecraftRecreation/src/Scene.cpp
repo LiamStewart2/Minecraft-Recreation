@@ -2,6 +2,7 @@
 
 void Scene::initChunkMap(TextureAtlas* textureAtlas)
 {
+    terrainMapNoise = PerlinNoise(config::SEED);
 	chunkMap.clear();
     texture = textureAtlas;
 
@@ -11,7 +12,7 @@ void Scene::initChunkMap(TextureAtlas* textureAtlas)
 		{
             Chunk* newChunk = new Chunk(glm::vec2(i, j));
 
-            newChunk->generateTerrain();
+            newChunk->generateTerrain(&terrainMapNoise);
             newChunk->generateChunkMesh(texture);
 
             chunkMap.push_back(newChunk);
@@ -30,7 +31,7 @@ void Scene::chunkGenerationQueueManager()
 
         Chunk* newChunk = new Chunk(chunkPosition);
 
-        newChunk->generateTerrain();
+        newChunk->generateTerrain(&terrainMapNoise);
         newChunk->generateChunkMesh(texture);
 
         chunkMap.push_back(newChunk);

@@ -21,4 +21,6 @@ struct config {
 	const static unsigned int chunkLayers = 64;
 
 	const static int renderDistance = 8;
+
+	const static int SEED = 21842178947129;
 };
