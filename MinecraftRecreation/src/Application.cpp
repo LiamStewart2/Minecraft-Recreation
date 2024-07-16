@@ -93,7 +93,7 @@ void Application::mainloop()
         handleEvents();
 
         // The Framerate
-        //std::cout << 1 / (glfwGetTime() - t) << " frames per second\n";
+        std::cout << 1 / (glfwGetTime() - t) << " frames per second\n";
     }
 }
 
@@ -109,8 +109,6 @@ void Application::handleEvents()
 
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         shouldClose = true;
-    if(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-        scene.deleteAllChunks();
 
     glfwPollEvents();
 }

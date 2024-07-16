@@ -20,8 +20,6 @@ public:
 
 	void update(Camera* camera);
 	void renderScene(Renderer* renderer, Camera* camera);
-
-	void deleteAllChunks();
 	
 	Chunk* getChunk(glm::vec2 chunkPosition);
 private:

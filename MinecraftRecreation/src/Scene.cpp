@@ -302,13 +302,3 @@ bool Scene::isPositionInChunkGenerationQueue(glm::vec2 chunkPosition)
     }
     return false;
 }
-
-void Scene::deleteAllChunks()
-{
-    for (Chunk* chunk : chunkMap)
-    {
-        delete chunk;
-    }
-
-    chunkMap.clear();
-}
