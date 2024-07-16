@@ -32,8 +32,8 @@ void Application::init()
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        //window = glfwCreateWindow(config::resolutionX, config::resolutionY, "Minecraft Recreation", glfwGetPrimaryMonitor(), NULL);
-        window = glfwCreateWindow(config::resolutionX, config::resolutionY, "Minecraft Recreation", NULL, NULL);
+        window = glfwCreateWindow(config::resolutionX, config::resolutionY, "Minecraft Recreation", glfwGetPrimaryMonitor(), NULL);
+        //window = glfwCreateWindow(config::resolutionX, config::resolutionY, "Minecraft Recreation", NULL, NULL);
         glfwMaximizeWindow(window);
         if (!window)
         {
@@ -75,7 +75,7 @@ void Application::start()
     renderer.initialize();
 
     double t = glfwGetTime();
-    scene.initChunkMap(glm::vec2(32, 32), &textureAtlas);
+    scene.initChunkMap(&textureAtlas);
     std::cout << glfwGetTime() - t << " seconds to build the map\n";
 }
 
@@ -83,7 +83,7 @@ void Application::start()
 
 void Application::mainloop()
 {
-    while (!glfwWindowShouldClose(window))
+    while (!glfwWindowShouldClose(window) && !shouldClose)
     {
         double t = glfwGetTime();
 
@@ -93,19 +93,22 @@ void Application::mainloop()
         handleEvents();
 
         // The Framerate
-        //std::cout << 1 / (glfwGetTime() - t) << " frames per second\n";
+        std::cout << 1 / (glfwGetTime() - t) << " frames per second\n";
     }
 }
 
 void Application::update()
 {
     camera.processKeyboard(window);
+
+    scene.update(&camera);
 }
 
 void Application::handleEvents()
 {
+
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwDestroyWindow(window);
+        shouldClose = true;
 
     glfwPollEvents();
 }
@@ -127,6 +130,8 @@ void Application::render()
 
 void Application::terminate()
 {
+    glfwDestroyWindow(window);
+    window = nullptr;
     glfwTerminate();
     renderer.terminate();
 }

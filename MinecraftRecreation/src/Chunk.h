@@ -6,12 +6,13 @@
 #include "BlockDatabase.h"
 #include "TextureAtlas.h"
 
+
 class Chunk
 {
 public:
 	Chunk() {}
 	Chunk(glm::vec2 chunkPosition) {chunkWorldPosition = chunkPosition;}
-	~Chunk() {}
+	~Chunk();
 
 	void generateTerrain();
 	void generateChunkMesh(TextureAtlas* textureAtlas);
@@ -25,6 +26,7 @@ public:
 
 	glm::vec2 getWorldPosition() { return chunkWorldPosition; }
 	glm::vec3 getBlockWorldPosition(glm::vec3 relativeBlockPosition);
+
 	Mesh chunkMesh;
 private:
 	glm::vec2 chunkWorldPosition = glm::vec2(0,0);

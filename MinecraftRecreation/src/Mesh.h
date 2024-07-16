@@ -15,7 +15,7 @@ class Mesh
 {
 public:
 	Mesh() { model = glm::mat4(1.0f); }
-	~Mesh() {}
+	~Mesh() {clean(); }
 
 	void setPosition(float x, float y, float z);
 
@@ -35,6 +35,6 @@ private:
 	std::vector<Vertex> vertices;
 	glm::mat4 model;
 
-	unsigned int VAO = 0;
-	unsigned int VBO = 0;
+	GLuint VAO = 0;
+	GLuint VBO = 0;
 };
