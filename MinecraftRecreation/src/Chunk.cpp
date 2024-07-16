@@ -18,7 +18,7 @@ void Chunk::generateTerrain()
 		for (int z = 0; z < config::chunkHeight; z++)
 		{
 			glm::vec3 blockWorldPosition = getBlockWorldPosition(glm::vec3(x, 0, z));
-			float a = sin((blockWorldPosition.x * blockWorldPosition.z) * 0.1f);
+			float a = sin((blockWorldPosition.x + blockWorldPosition.z) * 0.1f);
 			int height = a * 3 + 16;
 
 			//int height = sin(x*2 * z+1 * 0.001f) * 5;

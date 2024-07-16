@@ -1,6 +1,6 @@
 #include "Application.h"
 
-//TODO: fix memory leak :)
+//TODO: Find a Noise implementation
 
 int main(void)
 {
