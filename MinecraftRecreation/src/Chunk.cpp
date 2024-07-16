@@ -19,6 +19,7 @@ void Chunk::generateTerrain(PerlinNoise* terrainGenerationNoise)
 		{
 			glm::vec3 blockWorldPosition = getBlockWorldPosition(glm::vec3(x, 0, z));
 
+			// is offset to aboid perlin noise borders - the player has to travel 128 chunks to find a perlin noise border
 			double heightValue = terrainGenerationNoise->octaveNoise((blockWorldPosition.x + config::chunkWidth * 128) / config::chunkWidth, (blockWorldPosition.z + config::chunkHeight * 128) / config::chunkHeight, 3, 0.3);
 			int height = (config::chunkHeight / 2) + static_cast<int>((config::chunkHeight * heightValue * 0.5));
 
