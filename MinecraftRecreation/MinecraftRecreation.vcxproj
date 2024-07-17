@@ -153,6 +153,7 @@
     <ClCompile Include="src\TextureAtlas.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\PerlinNoise.h" />
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\BlockDatabase.h" />
     <ClInclude Include="src\BlockType.h" />
