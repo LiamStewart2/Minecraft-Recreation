@@ -22,5 +22,5 @@ struct config {
 
 	const static int renderDistance = 8;
 
-	const static int SEED = 21842178947129;
+	const static int SEED = 6542362362642;
 };
