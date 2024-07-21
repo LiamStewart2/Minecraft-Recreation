@@ -18,6 +18,7 @@ public:
 	void generateChunkMesh(TextureAtlas* textureAtlas);
 	void updateChunkMeshBuffers();
 
+	void placeBlock(BlockType* newBlockType, glm::vec3 position, bool override = false);
 
 	Mesh* getChunkMesh() { return &chunkMesh; }
 

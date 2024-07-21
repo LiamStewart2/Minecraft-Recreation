@@ -78,6 +78,21 @@ void Chunk::generateChunkMesh(TextureAtlas* textureAtlas)
 	}
 }
 
+void Chunk::placeBlock(BlockType* newBlockType, glm::vec3 position, bool override)
+{
+	int index = getIndexFromRelativePosition(position.x, position.y, position.z);
+	if(override)
+	{
+		blockBuffer[index] = newBlockType;
+		return;
+	}
+	if (getBlockAtPosition(position.x, position.y, position.z) == &BlockDatabase::Air)
+	{
+		blockBuffer[index] = newBlockType;
+		return;
+	}
+}
+
 void Chunk::updateChunkMeshBuffers()
 {
 	chunkMesh.generateMeshBuffers();

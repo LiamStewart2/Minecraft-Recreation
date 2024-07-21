@@ -13,6 +13,7 @@
 #include "Camera.h"
 #include "TextureAtlas.h"
 #include "PerlinNoise.h"
+#include "StructureDatabase.h"
 
 class Scene
 {

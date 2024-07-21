@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_IMAGE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_IMAGE;$(SolutionDir)Dependencies\JSON;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_IMAGE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_IMAGE;A:\C++\MinecraftRecreation\Dependencies\JSON;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,6 +151,8 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\TextureAtlas.cpp" />
+    <ClCompile Include="src\Structure.cpp" />
+    <ClCompile Include="src\StructureDatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\PerlinNoise.h" />
@@ -168,10 +170,13 @@
     <ClInclude Include="src\Vertex.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\TextureAtlas.h" />
+    <ClInclude Include="src\Structure.h" />
+    <ClInclude Include="src\StructureDatabase.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\default\shader.fs" />
     <None Include="res\shaders\default\shader.vs" />
+    <None Include="res\structures\trees\OakTree.json" />
     <None Include="res\textures\atlas\blockAtlas.aseprite" />
   </ItemGroup>
   <ItemGroup>

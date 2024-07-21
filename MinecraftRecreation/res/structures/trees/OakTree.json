@@ -1,0 +1,14 @@
+{
+    "Name":"Oak Tree",
+
+    "Blocks":[
+        {
+            "BlockPosition": [0, 0, 0], 
+            "BlockName":"OakLog"
+        },
+        {
+            "BlockPosition": [0, 1, 0], 
+            "BlockName":"OakLog"
+        }
+    ]
+}

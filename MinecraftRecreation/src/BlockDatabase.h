@@ -8,5 +8,6 @@ struct BlockDatabase
 	static BlockType Grass;
 	static BlockType Dirt;
 	static BlockType Stone;
+	static BlockType OakLog;
 };
 
