@@ -40,6 +40,8 @@ private:
 	void dynamicChunkLoading(Camera* camera);
 	void chunkGenerationQueueManager();
 
+	void placeStructure(Structure* structure, Chunk* chunk, glm::vec3 origin);
+
 	double chunkGenerationAllowance = (1.0f / 1000.0f) * 2.0f;
 	void addChunkToGenerationQueue(glm::vec2 chunkPosition);
 	void removeChunkFromGenerationQueue(glm::vec2 chunkPosition);

@@ -21,5 +21,6 @@ Structure::Structure(const char* filepath)
 		instruction _instruction;
 		_instruction.blockPosition = glm::vec3(structureData["Blocks"][i]["BlockPosition"][0], structureData["Blocks"][i]["BlockPosition"][1], structureData["Blocks"][i]["BlockPosition"][2]);
 		_instruction.blockType = &BlockDatabase::OakLog;
+		instructions.push_back(_instruction);
 	}
 }

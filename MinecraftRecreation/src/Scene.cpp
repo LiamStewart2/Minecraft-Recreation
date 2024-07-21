@@ -14,6 +14,15 @@ void Scene::initChunkMap(TextureAtlas* textureAtlas)
             Chunk* newChunk = new Chunk(glm::vec2(i, j));
 
             newChunk->generateTerrain(&terrainMapNoise);
+
+            glm::vec3 startOrigin = glm::vec3(config::chunkWidth / 2, config::chunkLayers - 1, config::chunkHeight / 2);
+            while (newChunk->getBlockAtPosition(startOrigin.x, startOrigin.y, startOrigin.z) == &BlockDatabase::Air)
+            {
+                startOrigin.y -= 1;
+            }
+            startOrigin.y += 1;
+            placeStructure(&StructureDatabase::OakTree, newChunk, startOrigin);
+
             newChunk->generateChunkMesh(texture);
 
             chunkMap.push_back(newChunk);
@@ -263,6 +272,15 @@ void Scene::dynamicChunkLoading(Camera* camera)
         }
     }
     lastCameraChunkPos = currentCameraChunkPos;
+}
+
+void Scene::placeStructure(Structure* structure, Chunk* chunk, glm::vec3 origin)
+{
+    for (int i = 0; i < structure->instructions.size(); i++)
+    {
+        instruction* _instruction = &structure->instructions[i];
+        chunk->placeBlock(_instruction->blockType, origin + _instruction->blockPosition);
+    }
 }
 
 void Scene::renderScene(Renderer* renderer, Camera* camera)
