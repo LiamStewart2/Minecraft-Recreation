@@ -9,6 +9,22 @@
         {
             "BlockPosition": [0, 1, 0], 
             "BlockName":"OakLog"
+        },
+        {
+            "BlockPosition": [0, 2, 0], 
+            "BlockName":"OakLog"
+        },
+        {
+            "BlockPosition": [0, 3, 0], 
+            "BlockName":"OakLog"
+        },
+        {
+            "BlockPosition": [0, 4, 0], 
+            "BlockName":"OakLog"
+        },
+        {
+            "BlockPosition": [1, 3, 0],
+            "BlockName":"OakLeaves"
         }
     ]
 }
