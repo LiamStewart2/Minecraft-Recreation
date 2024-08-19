@@ -16,11 +16,11 @@ struct config {
 	const static int pitch = 0;
 
 	// World Settings
-	const static unsigned int chunkWidth = 36;
-	const static unsigned int chunkHeight = 36;
+	const static unsigned int chunkWidth = 16;
+	const static unsigned int chunkHeight = 16;
 	const static unsigned int chunkLayers = 64;
 
-	const static int renderDistance = 40;
+	const static int renderDistance = 8;
 
 	const static int SEED = 859327891561278;
 };
