@@ -18,4 +18,4 @@ One of the many massive improvements, its the implementation of a chunk mesh. th
 
 # Project Setup
 the project currently has no build system, and relies on visual studio 2022. in the future a build system may be implemented.
-there is an issue with the libraries not being pushed to the branch, will need to fix this asap.
+there is an issue with the libraries not being pushed to the branch
